@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love For You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(173, 64, 87, 0.95);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1516487106395-f2d269d6a21c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ad4057;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: #ad4057;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover {
+            transform: scale(1.03);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* Memories Section */
+        .memories {
+            background-color: #f8f9fa;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Love Letter Section */
+        .love-letter {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            padding: 4rem 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .love-letter p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .heart {
+            color: #ad4057;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">My Forever Love</div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#memories">Memories</a></li>
+                <li><a href="#letter">Love Letter</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>My Dearest Love (for <strong>Khouloud</strong>)</h1>
+        <p>Every day with you is a blessing I cherish deeply</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">Our Story</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>From the moment our eyes met, I knew there was something special about you. Your smile lit up the room, and your laughter became my favorite melody. We've built something beautiful together, and I'm grateful for every moment we share.</p>
+                <p>Your kindness, intelligence, and compassion inspire me to be a better person every day. You've shown me what true love means - patience, understanding, and unwavering support through all of life's challenges.</p>
+                <p>I remember our first date like it was yesterday. The nervous excitement, the endless conversations, and the realization that I had found someone truly extraordinary. Since then, we've created countless memories that I will treasure forever.</p>
+            </div>
+            <div class="about-img">
+                <img src="1.jpg" alt="Couple enjoying time together">
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section id="memories" class="memories">
+        <h2 class="section-title">Our Memories</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #ad4057; font-style: italic;">
+            These are the photos I love the most, each one holding a special place in my heart.
+        </p>
+        <p style="text-align: center; margin-bottom: 2rem;">These moments with you are forever etched in my heart</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+            <img src="2.jpg" alt="Memory 1">
+            </div>
+            <div class="gallery-item">
+            <img src="3.jpg" alt="Memory 2">
+            </div>
+            <div class="gallery-item">
+            <img src="4.jpg" alt="Memory 3">
+            </div>
+            <div class="gallery-item">
+            <img src="5.jpg" alt="Memory 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section id="letter">
+        <h2 class="section-title">My Heart to Yours</h2>
+        <div class="love-letter">
+            <p>My dearest,</p>
+            
+            <p>I find myself thinking about you constantly, and with each thought, my heart swells with love and gratitude. You've brought colors to my world that I never knew existed, and melodies to my life that I never knew could be so beautiful.</p>
+            
+            <p>There are not enough words in any language to fully express how deeply I care for you. Your presence in my life has transformed me in ways I could never have imagined. You've taught me the true meaning of partnership, patience, and unconditional love.</p>
+            
+            <p>I cherish the little things about you - the way your eyes light up when you talk about something you're passionate about, the sound of your laughter that fills a room with joy, the gentle touch of your hand that reassures me everything will be alright.</p>
+            
+            <p>Through challenges and triumphs, you've stood by my side, offering support and encouragement. Your belief in me has given me strength when I felt weak, and your love has healed parts of me I didn't know were broken.</p>
+            
+            <p>I promise to always cherish you, to support your dreams as if they were my own, to be your safe harbor in times of storm, and your greatest celebrant in times of joy. I will strive every day to be worthy of the love you so freely give me.</p>
+            
+            <p>You are my today and all of my tomorrows. With you, I've found my home, my best friend, and my greatest love all in one beautiful soul.</p>
+            
+            <p>Forever yours,</p>
+            <p style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; margin-top: 1.5rem;">Radhwane Harres</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with <span class="heart">❤</span> for the most amazing person in my life , Khouloud</p>
+        <p>© 2025 My Forever Love</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu after clicking a link
+                document.getElementById('nav-links').classList.remove('active');
+            });
+        });
+
+        // Add fade-in animation when scrolling
+        const fadeElements = document.querySelectorAll('.about-text, .about-img, .gallery-item, .love-letter');
+        
+        const fadeInOptions = {
+            threshold: 0.3
+        };
+        
+        const fadeInObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            });
+        }, fadeInOptions);
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
